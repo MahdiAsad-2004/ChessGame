@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/dist/css/bootstrap.min.css">    
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="sweetAlert2/sweetalert2.min.css">
+
+    <title>Chess Game</title>
+</head>
+<body style="display: flex; flex-direction: column; justify-content: center; align-items: center;" >
+   <button class="btn btn-warning" onclick="localStorage.clear(); window.location.reload()">Reset Game</button>
+    <div style=" display: flex; flex-direction: column; align-items: center; justify-content: center; padding-top:15px; width: 100%; height: 100%;">
+    
+      <div class="d-none" id="pieces-container"></div>
+
+         <div style="display: flex; flex-direction: column; justify-content: center; border-radius: 12px; position: absolute; margin-right: 1150px;
+             height: 720px; width: 150px; z-index: 1000;">
+           <button onclick="ShowBlackArea()" class="mb-2 btn btn-danger">Black Area</button>
+           <button onclick="ShowWhiteArea()" class="mt-2 btn btn-primary">White Area</button>
+         </div>         
+
+        <div id="1234" style="border-radius: 12px; position: absolute; margin-right: 830px; height: 720px; width: 30px; background-color: gainsboro; z-index: 1000;">
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">8</h4>
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">7</h4>
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">6</h4>
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">5</h4>
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">4</h4>
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">3</h4>
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">2</h4>
+            <h4 style="margin: 0; border-radius: 12px; height: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">1</h4>
+         </div>
+         <img style="background-color: inherit;"/>
+         <div class="chess-row-even" data-row="8" >
+            <div id="index-18" class="chess-square"></div>
+            <div id="index-28" class="chess-square"></div>
+            <div id="index-38" class="chess-square"></div>
+            <div id="index-48" class="chess-square"></div>
+            <div id="index-58" class="chess-square"></div>
+            <div id="index-68" class="chess-square"></div>
+            <div id="index-78" class="chess-square"></div>
+            <div id="index-88" class="chess-square"></div>
+         </div>
+    
+         <div class="chess-row-odd" data-row="7">
+            <div id="index-17" class="chess-square"></div>
+            <div id="index-27" class="chess-square"></div>
+            <div id="index-37" class="chess-square"></div>
+            <div id="index-47" class="chess-square"></div>
+            <div id="index-57" class="chess-square"></div>
+            <div id="index-67" class="chess-square"></div>
+            <div id="index-77" class="chess-square"></div>
+            <div id="index-87" class="chess-square"></div>
+         </div>
+    
+         <div class="chess-row-even" data-row="6">
+            <div id="index-16" class="chess-square"></div>
+            <div id="index-26" class="chess-square"></div>
+            <div id="index-36" class="chess-square"></div>
+            <div id="index-46" class="chess-square"></div>
+            <div id="index-56" class="chess-square"></div>
+            <div id="index-66" class="chess-square"></div>
+            <div id="index-76" class="chess-square"></div>
+            <div id="index-86" class="chess-square"></div>
+         </div>
+    
+         <div class="chess-row-odd" data-row="5">
+            <div id="index-15" class="chess-square"></div>
+            <div id="index-25" class="chess-square"></div>
+            <div id="index-35" class="chess-square"></div>
+            <div id="index-45" class="chess-square"></div>
+            <div id="index-55" class="chess-square"></div>
+            <div id="index-65" class="chess-square"></div>
+            <div id="index-75" class="chess-square"></div>
+            <div id="index-85" class="chess-square"></div>
+         </div>
+    
+         <div class="chess-row-even" data-row="4">
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+         </div>
+    
+         <div class="chess-row-odd" data-row="3">
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+         </div>
+    
+         <div class="chess-row-even" data-row="2">
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+         </div>
+    
+         <div class="chess-row-odd" data-row="1">
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+            <div class="chess-square"></div>
+         </div>
+
+    </div>
+
+    <div style="border-radius: 15px; margin-top: 15px; display: flex; flex-direction: row-reverse; padding-top: 2px; padding-bottom: 2px; width: 760px; background-color: gainsboro; z-index: 1000;">
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">8</h4>
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">7</h4>
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">6</h4>
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">5</h4>
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">4</h4>
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">3</h4>
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">2</h4>
+        <h4 style="margin: 0; border-radius: 15px; width: 12.5%; display: flex; justify-content: center; align-items: center; font-weight: bolder;">1</h4>
+     </div>
+  
+
+    <!-- <div class="chess-row-even">
+        <div style="border: 1px black solid; width: 95px; height: 100%; background-color: burlywood;" >
+            <div style="border: 3px lime solid; display: flex; flex-direction: row; justify-content: center; padding-top: 5px; padding-bottom: 5px; width: 100%; height: 100%;">
+                <img src="images/pawn-white.png" />
+            </div>
+        </div>
+        <div style="border: 1px black solid; width: 95px; height: 100%; background-color: rgb(211, 102, 52);" ></div>
+        <div style="border: 1px black solid; width: 95px; height: 100%; background-color: burlywood;" ></div>
+        <div style="border: 3px lime solid; display: flex; flex-direction: row; justify-content: center; padding-top: 5px; padding-bottom: 5px;  width: 95px; height: 100%; background-color: rgb(211, 102, 52);" >
+            <img src="images/pawn-black.png" />
+        </div>
+        <div style="border: 1px black solid; width: 95px; height: 100%; background-color: burlywood;" ></div>
+        <div style="border: 1px black solid; width: 95px; height: 100%; background-color: rgb(211, 102, 52);" ></div>
+        <div style="border: 1px black solid; width: 95px; height: 100%; background-color: burlywood;" ></div>
+        <div style="border: 1px black solid; width: 95px; height: 100%; background-color: rgb(211, 102, 52);" ></div>
+     </div> -->
+
+      <!-- Button trigger modal -->
+      <button id="modal-button" hidden type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+         Launch static backdrop modal
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+         <div class="modal-dialog modal-lg">
+         <div style="background-color: rgb(206, 226, 201);" class="modal-content">
+            <div class="modal-header">
+               <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">Select A Piece</h1>
+               <button id="close-modal-button" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body out-pieces-container">               
+            </div>
+            <div class="modal-footer">
+               <button id="submit-select-outPiece" type="button" class="btn btn-success">Submit</button>
+            </div>
+         </div>
+         </div>
+      </div>
+
+      
+
+      <button hidden id="modal-black-win-button" type="button" data-bs-toggle="modal" data-bs-target="#black-win-modal">sfsf</button>
+      <div class="modal fade" id="black-win-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" >
+         <div class="modal-dialog modal-dialog-centered">
+            <div style="background-color: rgb(36, 36, 36);" class="p-2 modal-content">
+               <div class="modal-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <h1 class="mt-3 mb-3 text-white text-center">Black Won</h4>               
+                  <button data-bs-dismiss="modal" class="mt-5 btn btn-light">Ok</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+
+      
+      <button hidden id="modal-white-win-button" type="button" data-bs-toggle="modal" data-bs-target="#white-win-modal">ssfsf</button>
+      <div class="modal fade" id="white-win-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" >
+         <div class="modal-dialog modal-dialog-centered">
+            <div style="background-color: rgb(240, 240, 240);" class="p-2 modal-content">
+               <div class="modal-body" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                  <h1 class="mt-3 mb-3 text-dark text-center">White Won</h4>               
+                  <button data-bs-dismiss="modal" class="mt-5 btn btn-dark">Ok</button>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- <input id="" value=""/> -->
+
+     <script src="./bootstrap/dist/js/bootstrap.min.js"></script>
+     <script src="./sweetAlert2/sweetalert2.all.min.js"></script>
+     <script src="./js/pieces.js"></script>
+     <script src="./js/Moves.js"></script>
+     <script src="./js/app.js"></script>
+</body>
+</html>
