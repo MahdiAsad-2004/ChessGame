@@ -434,4 +434,7 @@ SubmitSelectOutPiece.onclick = () => {
 
 
 
+
+
+
 //alert(`85 => ${GetRowFromIndex(85)} , ${GetColumnFromIndex(85)}`)
