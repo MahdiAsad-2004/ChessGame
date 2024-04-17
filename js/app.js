@@ -255,6 +255,7 @@ function PieceMove(event){
             }
         }
     }
+    
     document.querySelectorAll('.active').forEach(a => {
         a.classList.remove('active');
         a.removeAttribute('onclick');
